@@ -34,26 +34,18 @@ function update() {
             lifeObj[key] = 0
         } else if (count === 3 && !lifeObj[key]) {
             lifeObj[key] = 1
-        }if (( count === 3 ) && lifeObj[key]) {  
-            lifeObj[key] = 1
         }
-        // else if(Number.isNaN(NaN)) {
-        //     console.log('nan');
-        //     lifeObj[key] = 0
 
-        // }
         if(lifeObj[key]) {
             cc.fillRect(split[0], split[1], size, size)
         }
     }
 }
+update()
 setInterval(() => update(), 1)
 function countOfNeighbours(x, y) {
    const arr = [  lifeObj[`${x + size},${y}`] , lifeObj[`${x - size},${y}`]
     , lifeObj[`${x + size},${y - size}`] , lifeObj[`${x},${y - size}`] , lifeObj[`${x - size},${y - size}`]
     , lifeObj[`${x + size},${y + size}`] , lifeObj[`${x},${y + size}`] , lifeObj[`${x - size},${y + size}`]]
-    // console.log(lifeObj[`${x + size},${y}`] , lifeObj[`${x - size},${y}`]
-    // , lifeObj[`${x + size},${y - size}`] , lifeObj[`${x},${y - size}`] , lifeObj[`${x - size},${y - size}`]
-    // , lifeObj[`${x + size},${y + size}`] , lifeObj[`${x},${y + size}`] , lifeObj[`${x - size},${y + size}`]);
-    return arr.map(v => v === undefined ? 0 : v).reduce((acc, v) => acc + v);
+    return arr.map(v => v === undefined ? 0 : v).reduce((acc, v) => acc + v,0);
 }
